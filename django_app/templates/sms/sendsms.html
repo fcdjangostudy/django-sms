@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div>
+    <h2>SMS보내기</h2>
+
+    {% if aftersend == True %}
+        <div>
+            <h2>문자메세지를 전송완료 했습니다.</h2>
+            <a href="{% url 'send_sms' %}">
+                <button>다시 보내기</button>
+            </a>
+        </div>
+    {% else %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">SMS보내기</button>
+        </form>
+    {% endif %}
+</div>
+</body>
+</html>
